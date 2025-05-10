@@ -1,0 +1,262 @@
+@media only screen and (min-width: 767px) and (max-width: 1351px) {
+    .footer-logo .logo-nav-link-group {
+        display: none;
+    }
+    .footer-logo .logo-nav-link-mobile {
+        display: block;
+        margin-left: 105px;
+    }
+}
+@media only screen and (min-width: 220px) and (max-width: 767px) {
+    .section-header .title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+    }
+    .card-compability {
+        width: 100%;
+    }
+    .video {
+        margin-top: -200px;
+    }
+    .section-journey {
+        margin-top: 80px;
+    }
+    .video iframe,
+    .video video {
+        height: 250px;
+        border-radius: 8px;
+    }
+    .journey-card-info .swiper-slide {
+        width: 50%;
+    }
+    .section-coverage .coverage,
+    .section-footer .card-footer .title {
+        margin: 0;
+    }
+    .product-detail-img {
+        height: 45vh;
+    }
+    .blog-introduction {
+        padding: 0;
+    }
+    .footer__copyright {
+        justify-content: center;
+    }
+
+    .nav-award-next {  
+        left: 53%;
+    }
+    .nav-award-prev {  
+        left: 43%;
+    }
+    
+    .footer-logo .logo-nav-link-mobile  {
+        display: block;
+    }
+    .footer-logo .logo-nav-link-group {
+        display: none;
+    }
+    .footer-logo .logo-navbar {
+        flex-direction: column;
+    }
+    
+}
+
+@media only screen and (min-width: 220px) and (max-width: 575px) {
+    
+    .section-blog-detail .title,
+    .product-compability .title, 
+    .product-accordion .title,
+    .product-detail-about .title, 
+    .section-sertifikat .title,
+    .section-company .title,
+    .why-list-number .title-number,
+    .section-footer .card-footer .title {
+        font-size: 24px;
+    }
+    .blog-introduction blockquote p,   
+    .blog-introduction h1,
+    .blog-introduction h2, 
+    .blog-introduction h3, 
+    .blog-introduction h4, 
+    .blog-introduction h5, 
+    .blog-introduction h6,
+    .coverage-list-content h6,
+    .product-compability-alert .alert h6, 
+    .card-product-crown .card-title,
+    .section-vission .title,
+    .sertifikat-content .title-sertifikat,
+    .section-story .title,
+    .section-our-product .title, 
+    .section-services .title, 
+    .section-why .title,
+    .journey-info .title {
+        font-size: 20px;
+        line-height: 35px;
+    }     
+    .accordion-item .accordion__item-title,
+    .accordion-item .accordion__item-header,
+    .section-header .title-desc,
+    .why-list-number .title-info,
+    .card-award-text .card-body .card-text {
+        font-size: 16px;
+        line-height: 20px;
+    }  
+    .blog-introduction p,
+    .blog-item .blog__desc, 
+    .product-compability-alert .alert p,
+    .form label,
+    .accordion-item .accordion__item-body p,
+    .product-accordion p,
+    .card-product-crown .card-text,
+    .product-detail-about small,
+    .section-vission small, 
+    .section-sertifikat small, 
+    .section-story small, 
+    .section-company small,
+    .why-list-number p,
+    .section-journey p,
+    .section-our-product .text, 
+    .section-services .text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .why-list-number .title-info {
+        line-height: 24px;
+    }
+    .why-list-number p {
+        margin-top: 5px;
+    }
+    .mobile-1 {
+        order: 1;
+    }
+    .mobile-2 {
+        order: 2;
+    }
+    .why-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .product-compability-form .form,
+    .card-compability,
+    .why-header a {
+        width: 100%;
+    }
+    .why-header .icon {
+        transform: translate(-50%, -80%) rotate(90deg);
+    }
+    .btn-tab {
+        padding: 20px;
+    }
+    .blog-introduction .card .card-body,
+    .card-award {
+        padding: 20px 20px;
+    }
+    .card-award .card-body {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    .card-award .card-body .card-title {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    .card-award .card-body .element-two {
+        display: none;
+    }
+    .card-award .card-body .element-one {
+        max-width: 60px;
+        right: 0px;
+        top: 10px;
+    }
+    .swiper-award .swiper-wrapper {
+        /* padding-bottom: 100%; */
+    }
+    .coverage-info-header {
+        flex-direction: column;
+        align-items: start;
+    }
+    .section-coverage .btn-coverage {
+        padding: 10px 24px;
+        width: fit-content;
+        height: 40px;
+        line-height: 1.5;
+    }
+    .coverage-card-info .swiper-slide {
+        width: 70%;
+    }
+    .section-footer .card-footer {
+        padding: .75rem 1.25rem;
+    }
+    .footer-logo .logo-navbar {
+        flex-direction: column;
+    }
+    .footer-logo .logo-nav-link-group {
+        display: none;
+    }
+    .footer-logo .logo-nav-link-mobile  {
+        display: block;
+    }
+    .section-header .img-about {
+        border-radius: 8px;
+    }
+    .card-company .next-one {
+        top: 97%;
+        right: 80%;
+        rotate: 90deg;
+    }
+    .vission-content {
+        display: flex;
+        align-items: flex-start;
+    }
+    .vission-content img {
+        max-width: 40px;
+        margin-right: 20px;
+    }
+    .coverage-data .social__icons,
+    .product-accordion {
+        margin-bottom: 20px;
+    }
+    .card-compability .card-body {
+        padding: 1.25rem;
+    }
+    .product-compability p {
+        margin-top: 25px;
+    }
+    .services-img .number-left {
+        top: -20px;
+        font-size: 56px;
+        left: 10px;
+    }
+    .services-img .number-right {
+        top: -20px;
+        right: 10px;
+        font-size: 56px;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .breadcrumb-item {
+        font-size: 11px;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    
+}
+@media only screen and (max-width: 767px) {
+    
+}
+
+
+@media only screen and (min-width: 991px) {
+    .blog-introduction {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
