@@ -11,8 +11,8 @@
 
                     <div class="row g-10">
                         <div class="col-lg-6">
-                            <a class="d-block card-rounded overlay h-lg-100" data-fslightbox="lightbox-projects" href="{{ asset('media/stock/600x600/img-23.jpg') }}">
-                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px" style="background-image:url('{{ asset('media/stock/600x600/img-23.jpg') }}')">
+                            <a class="d-block card-rounded overlay h-lg-100" data-fslightbox="lightbox-projects" href="{{ asset('images/dashboard/dipan2.jpg') }}">
+                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px" style="background-image:url('{{ asset('images/dashboard/dipan2.jpg') }}')">
                                 </div>
 
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
@@ -23,8 +23,8 @@
                         <div class="col-lg-6">
                             <div class="row g-10 mb-10">
                                 <div class="col-lg-6">
-                                    <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('media/stock/600x600/img-22.jpg') }}">
-                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('media/stock/600x600/img-22.jpg') }}')">
+                                    <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('images/dashboard/dipan4.jpeg') }}">
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('images/dashboard/dipan4.jpeg') }}')">
                                         </div>
 
                                         <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
@@ -33,8 +33,8 @@
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('media/stock/600x600/img-21.jpg') }}">
-                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('media/stock/600x600/img-21.jpg') }}')">
+                                    <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('images/dashboard/dipan1.jpeg') }}">
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('images/dashboard/dipan1.jpeg') }}')">
                                         </div>
 
                                         <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
@@ -43,8 +43,8 @@
                                 </div>
                             </div>
 
-                            <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('media/stock/600x400/img-20.jpg') }}">
-                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('media/stock/600x600/img-20.jpg') }}')">
+                            <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects" href="{{ asset('images/dashboard/dipan3.jpg') }}">
+                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px" style="background-image:url('{{ asset('images/dashboard/dipan3.jpg') }}')">
                                 </div>
 
                                 <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
