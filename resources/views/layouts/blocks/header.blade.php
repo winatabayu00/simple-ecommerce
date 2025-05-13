@@ -45,9 +45,9 @@
 
             <!--begin::Logo-->
             <a href="{{ route('admin.dashboard.index') }}" class="app-sidebar-logo">
-                <img alt="Logo" src="{{ asset('images/logos/Pasar_Solar.png') }}" class="h-50px theme-light-show" />
-                <img alt="Logo" src="{{ asset('images/logos/Pasar_Solar.png') }}"
-                    class="h-50px theme-dark-show" />
+                <span class="h-2 fw-bold">
+                    {{ env('APP_NAME') }}
+                </span>
             </a>
             <!--end::Logo-->
         </div>
