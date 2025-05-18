@@ -10,7 +10,13 @@ class Order extends Model
 {
     use HasUuids;
     protected $fillable = [
-        'user_id', 'status', 'total',
+        'user_id',
+        'status',
+        'total',
+        'payment_method',
+        'phone',
+        'address',
+        'notes',
     ];
 
     public function user(): BelongsTo

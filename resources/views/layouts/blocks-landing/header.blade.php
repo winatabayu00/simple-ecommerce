@@ -52,7 +52,8 @@
                 @if(auth()->check())
                     @include('layouts.blocks.navbar')
                 @else
-                    <a href="{{ route('auth.login') }}" class="btn btn-success">Masuk</a>
+                    <a href="{{ route('auth.register') }}" class="btn btn-primary mx-1">Daftar</a>
+                    <a href="{{ route('auth.login') }}" class="btn btn-success mx-1">Masuk</a>
                 @endif
             </div>
         </div>

@@ -73,6 +73,7 @@
     @yield('content')
 </div>
 
+@include('vendor.indicator.init-indicator')
 @include('includes.admin.scripts')
 
 </body>

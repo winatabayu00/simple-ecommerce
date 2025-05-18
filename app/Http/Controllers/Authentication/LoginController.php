@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Winata\Core\Response\Exception\BaseException;
 
@@ -46,6 +47,47 @@ class LoginController extends Controller
             return redirect()->intended(route('home'));
         }
 
+    }
+
+
+    /**
+     * @return View
+     */
+    #[Attributes\Get('register', 'register')]
+    public function registerView(): View
+    {
+        return $this->view('pages.authentication.register');
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    #[Attributes\Post('register')]
+    public function doRegister(Request $request): RedirectResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        User::query()->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $request->password,
+        ]);
+
+        successToast('Berhasil melakukan pendaftaran akun');
+        return redirect()->route('auth.login');
     }
 
     /**

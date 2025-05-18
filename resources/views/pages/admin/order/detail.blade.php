@@ -23,7 +23,7 @@
                             <tr>
                                 <td class="text-muted">
                                     <div class="d-flex align-items-center">
-                                        <i class="ki-outline ki-calendar fs-2 me-2"></i> Date Added
+                                        <i class="ki-outline ki-calendar fs-2 me-2"></i> Tanggal Order
                                     </div>
                                 </td>
                                 <td class="fw-bold text-end">{{ \Illuminate\Support\Carbon::parse($order->created_at)->toDateTimeString() }}</td>
@@ -31,22 +31,33 @@
                             <tr>
                                 <td class="text-muted">
                                     <div class="d-flex align-items-center">
-                                        <i class="ki-outline ki-wallet fs-2 me-2"></i> Payment Method
+                                        <i class="ki-outline ki-wallet fs-2 me-2"></i> Metode Pembayaran
                                     </div>
                                 </td>
                                 <td class="fw-bold text-end">
-                                    Online
+                                    {{ \App\Enums\PaymentMethod::tryFrom($order->payment_method)->label() }}
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="text-muted">
                                     <div class="d-flex align-items-center">
-                                        <i class="ki-outline ki-wallet fs-2 me-2"></i> Total Price
+                                        <i class="ki-outline ki-wallet fs-2 me-2"></i> Total Harga
                                     </div>
                                 </td>
                                 <td class="fw-bold text-end">
                                     {{ \Akaunting\Money\Money::IDR($order->total) }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-muted">
+                                    <div class="d-flex align-items-center">
+                                        <i class="ki-outline ki-wallet fs-2 me-2"></i> Catatan
+                                    </div>
+                                </td>
+                                <td class="fw-bold text-end">
+                                    {{ $order->notes }}
                                 </td>
                             </tr>
                             </tbody>
@@ -63,7 +74,7 @@
                 <!--begin::Card header-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Customer Details</h2>
+                        <h2>Customer Detail</h2>
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -77,7 +88,7 @@
                             <tr>
                                 <td class="text-muted">
                                     <div class="d-flex align-items-center">
-                                        <i class="ki-outline ki-profile-circle fs-2 me-2"></i> Customer
+                                        <i class="ki-outline ki-profile-circle fs-2 me-2"></i> Nama
                                     </div>
                                 </td>
 
@@ -103,6 +114,18 @@
                                     <a href="#"
                                        class="text-gray-600 text-hover-primary">
                                         {{ $order->user->email }} </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">
+                                    <div class="d-flex align-items-center">
+                                        <i class="ki-outline ki-sms fs-2 me-2"></i> Nomor HP
+                                    </div>
+                                </td>
+                                <td class="fw-bold text-end">
+                                    <a href="#"
+                                       class="text-gray-600 text-hover-primary">
+                                        {{ $order->phone ?? $order->user->phone }} </a>
                                 </td>
                             </tr>
                             </tbody>

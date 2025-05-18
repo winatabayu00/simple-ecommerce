@@ -10,11 +10,14 @@ use App\Actions\Product\UpdateProductStock;
 use App\Actions\ProductSummary\UpdateOrCreateProductSummary;
 use App\Actions\Review\CreateReview;
 use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
 use App\Models\CartItem;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Winata\PackageBased\Abstracts\BaseService;
 
@@ -77,10 +80,22 @@ class ShoppingService extends BaseService
 
     /**
      * @param User $user
+     * @param array $inputs
      * @return void
+     * @throws AuthorizationException
+     * @throws ValidationException
      */
-    public function addCartToOrder(User $user): void
+    public function addCartToOrder(User $user, array $inputs): void
     {
+        $validated = $this->validate(
+            inputs: $inputs,
+            rules: [
+                'payment_method' => ['required', 'string', Rule::in(array_values(PaymentMethod::cases()))],
+                'phone' => ['required', 'string'],
+                'address' => ['required', 'string'],
+                'notes' => ['required', 'string'],
+            ]
+        );
         $cartFromUser = $user->cart;
         $cartItems = $cartFromUser->cartItems;
 
@@ -100,13 +115,12 @@ class ShoppingService extends BaseService
             ];
         }
 
-        DB::transaction(function () use ($cartFromUser, $user, $dataOrderItems, $totalPrice) {
+        DB::transaction(function () use ($validated, $cartFromUser, $user, $dataOrderItems, $totalPrice) {
             // creating order
-            $dataOrder = [
-                'user_id' => $user->id,
-                'status' => OrderStatus::PLACED->value,
-                'total' => $totalPrice,
-            ];
+            $dataOrder = Order::getFillableAttribute($validated);
+            $dataOrder['user_id'] = $user->id;
+            $dataOrder['status'] = OrderStatus::PLACED->value;
+            $dataOrder['total'] = $totalPrice;
             $order = (new CreateOrder($dataOrder))->execute();
 
             // insert items on cart to order items

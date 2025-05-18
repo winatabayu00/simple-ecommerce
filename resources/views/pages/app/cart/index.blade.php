@@ -1,6 +1,7 @@
 @extends('layouts.app-landing')
 
 @section('app-content')
+
     <div class="d-flex flex-column flex-column-fluid">
 
         <div id="kt_app_toolbar" class="app-toolbar  pt-6 pb-2 ">
@@ -26,13 +27,9 @@
 
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <div class="btn btn-primary btn-sm">
-                                <form action="{{ route('cart.checkout') }}" method="post">
-                                    @csrf
-                                    <button href="#" class="btn btn-primary btn-sm">
-                                        Checkout
-                                    </button>
-                                </form>
-
+                                <button href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                                    Checkout
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -158,5 +155,57 @@
             </div>
         </div>
 
+    </div>
+
+
+
+    <div class="modal fade" tabindex="-1" id="kt_modal_1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Konfirmasi Pembelian</h3>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <form action="{{ route('cart.checkout') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="payment-method" class="col-form-label required">Metode Pembayaran:</label>
+                            <select class="form-select form-select-solid" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" name="payment_method">
+                                <option></option>
+                                @foreach($paymentMethods as $paymentMethod)
+                                    <option value="{{ $paymentMethod->value }}" @selected(old('payment_method') == $paymentMethod->value)>{{ $paymentMethod->label() }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label required">Nomor Yang Bisa Dihubungi</label>
+                            <input type="number" class="form-control" id="recipient-name" name="phone" value="{{ old('phone') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label required">Lokasi Pengiriman:</label>
+                            <textarea class="form-control" id="message-text" name="address">{{ old('address') }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Catatan:</label>
+                            <textarea class="form-control" id="message-text" name="notes">{{ old('notes') }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">BATAL</button>
+                        <button type="submit" class="btn btn-primary">PROSES</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
     </div>
 @endsection

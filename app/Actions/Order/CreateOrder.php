@@ -2,7 +2,9 @@
 
 namespace App\Actions\Order;
 
+use App\Enums\PaymentMethod;
 use App\Models\Order;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Winata\PackageBased\Abstracts\BaseAction;
 use Winata\PackageBased\Concerns\ValidationInput;
@@ -31,6 +33,10 @@ class CreateOrder extends BaseAction
                 'user_id' => ['required', 'int'],
                 'status' => ['required', 'string'],
                 'total' => ['required', 'numeric', 'gt:0'],
+                'payment_method' => ['required', 'string', Rule::in(array_values(PaymentMethod::cases()))],
+                'phone' => ['required', 'string'],
+                'address' => ['required', 'string'],
+                'notes' => ['required', 'string'],
             ]
         );
 

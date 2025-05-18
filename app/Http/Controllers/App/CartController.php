@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\App;
 
+use App\Enums\PaymentMethod;
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use App\Models\User;
@@ -34,6 +35,9 @@ class CartController extends Controller
             ->getAllDataPaginated();
 
         $this->setData('carts', $carts);
+
+        $paymentMethods = PaymentMethod::cases();
+        $this->setData('paymentMethods', $paymentMethods);
         return $this->view('pages.app.cart.index');
     }
 
@@ -77,13 +81,15 @@ class CartController extends Controller
      * @param Request $request
      * @param ShoppingService $service
      * @return RedirectResponse
+     * @throws AuthorizationException
+     * @throws ValidationException
      */
     #[Attributes\Post('checkout', 'checkout')]
     public function checkout(Request $request, ShoppingService $service): RedirectResponse
     {
         /** @var User $user */
         $user = \auth()->user();
-        $service->addCartToOrder($user);
+        $service->addCartToOrder($user, $request->input());
 
         successToast('Remove Item Cart');
         return redirect()->back();
