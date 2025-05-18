@@ -34,7 +34,7 @@ class CreateUser extends BaseAction
             inputs: $this->inputs,
             rules: [
                 'name' => ['required', 'string'],
-                'phone' => ['required', 'string'],
+                'phone' => ['nullable', 'string'],
                 'email' => ['required', 'email'],
                 'password' => ['required', 'string'],
                 'role' => ['required', 'string', Rule::in(array_values(Roles::cases()))],

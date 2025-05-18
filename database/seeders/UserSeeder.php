@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Actions\User\CreateUser;
 use App\Enums\Roles;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
