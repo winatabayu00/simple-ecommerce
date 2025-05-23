@@ -6,6 +6,7 @@ use App\Actions\Cart\AddToCart;
 use App\Actions\Cart\RemoveItemFromCart;
 use App\Actions\Order\CreateOrder;
 use App\Actions\OrderItem\CreateOrderItem;
+use App\Actions\OrderSummary\UpdateOrCreateOrderSummary;
 use App\Actions\Product\UpdateProductStock;
 use App\Actions\ProductSummary\UpdateOrCreateProductSummary;
 use App\Actions\Review\CreateReview;
@@ -123,6 +124,7 @@ class ShoppingService extends BaseService
             $dataOrder['total'] = $totalPrice;
             $order = (new CreateOrder($dataOrder))->execute();
 
+            $totalSelling = 0;
             // insert items on cart to order items
             foreach ($dataOrderItems as $dataOrderItem) {
                 $dataOrderItem['order_id'] = $order->id;
@@ -131,7 +133,11 @@ class ShoppingService extends BaseService
                 $product = Product::query()->findOrFail($dataOrderItem['product_id']);
 
                 (new UpdateOrCreateProductSummary($product, total_selling: $dataOrderItem['quantity']))->execute();
+                $totalSelling += $dataOrderItem['quantity'];
             }
+
+            // create order summary
+            (new UpdateOrCreateOrderSummary(now(), revenue: $totalPrice, sales: $totalSelling))->execute();
 
             // delete cart items user after creating order
             $cartFromUser->cartItems()->delete();
