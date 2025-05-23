@@ -83,7 +83,6 @@
                 </div>
             </div>
 
-            @include('layouts.blocks.footer')
         </div>
     </div>
 </div>

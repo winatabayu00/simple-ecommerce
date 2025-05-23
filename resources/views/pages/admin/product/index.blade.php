@@ -77,7 +77,8 @@
                                         <span class="fw-bold">{{ $product->stock }}</span>
                                     </td>
                                     <td class="text-end pe-0 dt-type-numeric" data-order="25">
-                                        <span class="fw-bold ms-3">{{ \Akaunting\Money\Money::IDR($product->price) }}</span>
+                                        <span
+                                            class="fw-bold ms-3">{{ \Akaunting\Money\Money::IDR($product->price) }}</span>
                                     </td>
                                     <td class="text-end pe-0" data-order="rating-5">
                                         <div class="rating justify-content-end">
@@ -142,5 +143,4 @@
         <!--end::Products-->
     </div>
     <!--end::Content container-->
-    </div>
 @endsection

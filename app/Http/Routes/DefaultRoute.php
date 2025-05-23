@@ -71,7 +71,7 @@ class DefaultRoute extends BaseRoute
                 icon: 'ki-outline ki-home-2 fs-2',
                 menus: function ($menu) {
                     return $menu->addMenu(
-                        title: __('User Management'),
+                        title: __('Customers'),
                         icon: 'ki-book-open',
                         routeName: 'admin.users.index',
                         activeRouteName: 'admin.users*',
