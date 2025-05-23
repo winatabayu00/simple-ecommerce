@@ -17,13 +17,13 @@
 
                             <form>
                                 <div class="card-body py-3">
-                                    <div class="separator separator-content my-15">HOT</div>
+                                    <div class="separator separator-content my-15">Populer</div>
                                     <div class="form-check my-2">
                                         <input class="form-check-input" type="radio" value="recommended"
                                                id="flexRadioCheckDefault1" @checked(request()->input('hot') == 'recommended')
                                                name="hot">
                                         <label class="form-check-label" for="flexRadioCheckDefault1">
-                                            Recommended
+                                            Rekomendasi
                                         </label>
                                     </div>
 
@@ -32,7 +32,7 @@
                                                id="flexRadioCheckDefault2" @checked(request()->input('hot') == 'best_seller')
                                                name="hot">
                                         <label class="form-check-label" for="flexRadioCheckDefault2">
-                                            Best Seller
+                                            Penjualan Terbanyak
                                         </label>
                                     </div>
 
@@ -41,11 +41,11 @@
                                                id="flexRadioCheckDefault3" @checked(request()->input('hot') == 'most_popular')
                                                name="hot">
                                         <label class="form-check-label" for="flexRadioCheckDefault3">
-                                            Most Popular
+                                            Sangat Populer
                                         </label>
                                     </div>
 
-                                    <div class="separator separator-content my-15">By Rates</div>
+                                    <div class="separator separator-content my-15">Rating</div>
                                     <div class="rating mt-2">
                                         @for($i = 1; $i <= 5; $i++)
                                             <label class="rating-label mx-3" for="kt_rating_2_input_{{ $i }}">
@@ -75,7 +75,7 @@
                                         @endfor
                                     </div>
 
-                                    <div class="separator separator-content my-15">General</div>
+                                    <div class="separator separator-content my-15">Lainnya</div>
                                     <div class="d-flex flex-column mb-8 fv-row">
                                         <div class="mb-0">
                                             <label class="form-label">Skala Harga</label>
