@@ -78,7 +78,7 @@
                                     <div class="separator separator-content my-15">General</div>
                                     <div class="d-flex flex-column mb-8 fv-row">
                                         <div class="mb-0">
-                                            <label class="form-label">Example</label>
+                                            <label class="form-label">Skala Harga</label>
                                             <div id="kt_slider_basic"></div>
 
                                             <div class="pt-5">
