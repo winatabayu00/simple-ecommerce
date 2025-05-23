@@ -20,6 +20,7 @@ class ProductController extends Controller
     #[Attributes\Get('', 'index')]
     public function index(): View
     {
+        $this->setPageTitle('Produk');
         $products = ProductQuery::filterColumn()
             ->orderColumn()
             ->getAllDataPaginated();
@@ -36,6 +37,7 @@ class ProductController extends Controller
     #[Attributes\Get('{product}/preview', 'preview')]
     public function preview(Request $request, Product $product): View
     {
+        $this->setPageTitle('Produk Detail');
         $request->mergeIfMissing([
             'product_id' => $product->id,
         ]);

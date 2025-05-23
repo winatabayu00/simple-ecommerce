@@ -8,17 +8,14 @@
 
                     <div class="row">
                         <div class="col-4 card card-xl-stretch mb-5 mb-xl-8 w-250px">
-                            <!--begin::Header-->
                             <div class="card-header border-0 pt-5">
                                 <h3 class="card-title align-items-start flex-column">
                                     <span class="card-label fw-bold fs-3 mb-1">Filters</span>
                                 </h3>
                             </div>
-                            <!--end::Header-->
 
 
                             <form>
-                                <!--begin::Body-->
                                 <div class="card-body py-3">
                                     <div class="separator separator-content my-15">HOT</div>
                                     <div class="form-check my-2">
@@ -79,37 +76,18 @@
                                     </div>
 
                                     <div class="separator separator-content my-15">General</div>
-                                    <!--begin::Input wrapper-->
                                     <div class="d-flex flex-column mb-8 fv-row">
-                                        <!--begin::Label-->
-                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="">BY Stock</span>
+                                        <div class="mb-0">
+                                            <label class="form-label">Example</label>
+                                            <div id="kt_slider_basic"></div>
 
-                                            <span class="ms-1" data-bs-toggle="tooltip" title="Select an option.">
-                                        <i class="ki-duotone ki-information text-gray-500 fs-7"><span
-                                                class="path1"></span><span
-                                                class="path2"></span><span class="path3"></span></i>
-                                    </span>
-                                        </label>
-                                        <!--end::Label-->
-
-                                        <!--begin::Buttons-->
-                                        <div class="d-flex flex-stack gap-5 mb-3">
-                                            <button type="button" class="btn btn-light-primary"
-                                                    data-kt-docs-advanced-forms="interactive" data-value="<5">< 5
-                                            </button>
-                                            <button type="button" class="btn btn-light-primary"
-                                                    data-kt-docs-advanced-forms="interactive" data-value="5-10">5 - 10
-                                            </button>
-                                            <button type="button" class="btn btn-light-primary"
-                                                    data-kt-docs-advanced-forms="interactive" data-value=">10">> 10
-                                            </button>
+                                            <div class="pt-5">
+                                                <div class="fw-semibold mb-2">Min: <span id="kt_slider_basic_min"></span></div>
+                                                <div class="fw-semibold mb-2">Max: <span id="kt_slider_basic_max"></span></div>
+                                                <input hidden="hidden" name="min_price" id="filter-min-price" value="{{ request()->input('min_price') }}" >
+                                                <input hidden="hidden" name="max_price" id="filter-max-price" value="{{ request()->input('max_price') }}" >
+                                            </div>
                                         </div>
-                                        <!--begin::Buttons-->
-
-                                        <input type="text" readonly hidden="hidden"
-                                               class="form-control form-control-solid" placeholder="Enter Amount"
-                                               name="amount"/>
                                     </div>
 
                                 </div>
@@ -182,14 +160,40 @@
 
 @push('js')
     <script>
-        const options = document.querySelectorAll('[data-kt-docs-advanced-forms="interactive"]');
-        const inputEl = document.querySelector('[name="amount"]');
-        options.forEach(option => {
-            option.addEventListener('click', e => {
-                e.preventDefault();
+        var slider = document.querySelector("#kt_slider_basic");
+        var valueMin = document.querySelector("#kt_slider_basic_min");
+        var valueMax = document.querySelector("#kt_slider_basic_max");
+        var filterMinPrice = document.querySelector("#filter-min-price");
+        var filterMaxPrice = document.querySelector("#filter-max-price");
 
-                inputEl.value = option.getAttribute('data-value');
-            });
+        let minPrice = parseInt("{{ request()->input('min_price', 100000) }}");
+        let maxPrice = parseInt("{{ request()->input('max_price', 100000000) }}");
+        noUiSlider.create(slider, {
+            start: [minPrice, maxPrice],
+            connect: true,
+            range: {
+                "min": 100000,
+                "max": 100000000,
+            }
+        });
+
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+
+        slider.noUiSlider.on("update", function (values, handle) {
+            const rawValue = Math.round(values[handle]);
+            const formattedValue = formatter.format(rawValue);
+            if (handle) {
+                valueMax.innerHTML = formattedValue;
+                filterMaxPrice.value = rawValue;
+
+            } else {
+                filterMinPrice.value = rawValue;
+                valueMin.innerHTML = formattedValue;
+            }
         });
     </script>
 @endpush
