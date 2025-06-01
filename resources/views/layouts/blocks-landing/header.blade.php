@@ -44,6 +44,13 @@
                             <a class="menu-link nav-link  py-3 px-4 px-xxl-6 {{ request()->routeIs('products.*') ? 'active' : null }}" href="{{ route('products.index') }}">
                                 Produk Kami </a>
                         </div>
+                        @if(auth()->check())
+                            <div class="menu-item">
+                                <a class="menu-link nav-link  py-3 px-4 px-xxl-6 {{ request()->routeIs('cart.*') ? 'active' : null }}" href="{{ route('cart.index') }}">
+                                    Keranjang
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

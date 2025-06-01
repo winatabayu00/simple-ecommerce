@@ -20,7 +20,6 @@ class DashboardController extends Controller
 
         $this->setPageTitle('Dashboard');
         $this->setBreadCrumb(['title' => 'Dashboard']);
-
     }
 
     /**
@@ -46,7 +45,11 @@ class DashboardController extends Controller
             ->getAllData();
 
         $totalIncomes = $orderSummaries->sum('total_incomes');
-        $averageIncome = $totalIncomes / $orderSummaries->count();
+        if ($totalIncomes > 0){
+            $averageIncome = $totalIncomes / $orderSummaries->count();
+        }else{
+            $averageIncome = 0;
+        }
         $totalSales = $orderSummaries->sum('total_sales');
 
         $this->setData('order_summaries', $orderSummaries);
